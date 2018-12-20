@@ -6,4 +6,9 @@ class User < ApplicationRecord
     with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,32}+\z/
   }
   has_secure_password
+
+  has_many :topics
+  has_many :favorites
+  has_many :favorites_topics, through: :favorites, source: 'topic'
+  has_many :comments
 end
